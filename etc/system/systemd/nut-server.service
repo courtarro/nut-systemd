@@ -1,0 +1,16 @@
+[Unit]
+Description=Network UPS Tools - power devices information server
+After=network.target
+Wants=nut-driver@3B1234X98765.service
+
+[Service]
+ExecStart=/sbin/upsd
+User=nut
+Group=nut
+RuntimeDirectory=nut
+RuntimeDirectoryMode=770
+Type=forking
+PIDFile=/run/nut/upsd.pid
+
+[Install]
+WantedBy=multi-user.target

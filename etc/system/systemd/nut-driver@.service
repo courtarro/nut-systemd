@@ -1,0 +1,13 @@
+[Unit]
+Description=Network UPS Tools - power device driver controller
+BindsTo=dev-ups-%i.device
+After=dev-ups-%i.device
+
+[Service]
+ExecStart=/sbin/upsdrvctl start %i
+ExecStop=/sbin/upsdrvctl stop %i
+User=nut
+Group=nut
+RuntimeDirectory=nut
+RuntimeDirectoryMode=770
+Type=forking

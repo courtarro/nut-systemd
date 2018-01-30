@@ -1,0 +1,4 @@
+# Look for APC UPSes and create a symlink using the serial number of the UPS. This lets us refer to
+# the UPS without knowing the full bus address.
+
+ACTION=="add|change", SUBSYSTEM=="usb_device|usb", ATTR{idVendor}=="051d", ATTR{idProduct}=="0002", TAG+="systemd", SYMLINK+="ups/$attr{serial}", ENV{SYSTEMD_WANTS}="nut-driver@$attr{serial}.service"

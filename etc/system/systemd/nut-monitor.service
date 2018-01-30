@@ -1,0 +1,15 @@
+[Unit]
+Description=Network UPS Tools - power device monitor and shutdown controller
+After=nut-server.service
+
+[Service]
+ExecStart=/sbin/upsmon
+User=nut
+Group=nut
+RuntimeDirectory=nut
+RuntimeDirectoryMode=770
+Type=forking
+PIDFile=/run/nut/upsmon.pid
+
+[Install]
+WantedBy=multi-user.target
